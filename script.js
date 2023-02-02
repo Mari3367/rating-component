@@ -5,19 +5,21 @@ function createDivs(number) {
         div.className = 'number';
         div.tabIndex = i.toString();
         div.textContent = i;
-        div.addEventListener('click', setId);
+        div.addEventListener('click', setClassSelected);
         document.getElementsByClassName('numbers')[0].appendChild(div);
     }
 }
 
-function setId() {
+// replaced id='selected' with class='selected'
+
+function setClassSelected() {
 
     let target = document.getElementById('target').textContent;
 
-    this.setAttribute('id', 'selected');
-    let number = document.getElementById('selected').textContent;
+    this.setAttribute('class', 'selected');
+    let number = document.getElementsByClassName('selected')[0].textContent;
     console.log(number);
-    this.removeAttribute('id'); //replace id with class='selected' will return an array
+    this.classList.remove('selected'); //replace id with class='selected' will return an array
     this.onclick = ""; //allow one click only
 
     //adding selected number to the  target sentence
