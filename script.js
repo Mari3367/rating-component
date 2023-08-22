@@ -14,21 +14,34 @@ function createDivs(number) {
 
 function setClassSelected() {
 
-    let target = document.getElementById('target').textContent;
+    // this.setAttribute('class', 'selected');
+    // let number = document.getElementsByClassName('selected')[0].textContent;
+    // console.log(number);
+    // this.classList.remove('selected'); 
+    // this.onclick = ""; //allow one click only
 
-    this.setAttribute('class', 'selected');
-    let number = document.getElementsByClassName('selected')[0].textContent;
-    console.log(number);
-    this.classList.remove('selected'); //replace id with class='selected' will return an array
-    this.onclick = ""; //allow one click only
+    //testing
+    
+    //check if the clicked element has 'selected' class?
+    // if (this.classList.contains('selected')) {
+    //     this.classList.remove('selected');
+    // }
+
+    console.log(typeof document.getElementsByClassName('selected'));
+    
+    [...document.getElementsByClassName('selected')].forEach(element => {
+        element.classList.remove('selected');
+    });
+
+    this.classList.toggle('selected'); //add class = 'selected' to the clicked element
+    let number = this.textContent;
+
 
     //adding selected number to the  target sentence
-
-    let index = target.indexOf('out') - 1;   
-    let result = [target.slice(0, index), number, target.slice(index)].join('');
-    console.log(result);
-    //testing
     document.getElementById('target').textContent = `You selected ${number} out of 5`;
+
+    
+    return; //this should allow one-time work only. (replaced with this.onclick = '')
 }
 
 function showThanks() {
